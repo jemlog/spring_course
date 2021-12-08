@@ -51,6 +51,10 @@ public class ApplicationContextExtendsFindTest {
 
     }
 
+
+    // getBean에서 부모 클래스로 조회하면 하위의 자식 클래스들은 모두 다 나온다.
+    // 예를 들어 getBean(Object.class)로 조회하면 내가 등록한 빈, 스프링 내장 빈 모두 튀어나온다!
+
     @Test
     @DisplayName("부모 타입으로 전부 다 조회")
     void findAllBeanByParentType()
