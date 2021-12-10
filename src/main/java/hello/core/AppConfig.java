@@ -20,6 +20,7 @@ public class AppConfig {
 
     @Bean
     public MemberService memberService(){
+        System.out.println("call AppConfig.memberService");
         return new MemberServiceImpl(memberRepository());   // 역할들의 관계가 명확하다!
                                                             // 기존의 코드는 구현체의 중복이 있었다
                                                                // 그것마저 밖으로 빼줌....
@@ -27,11 +28,15 @@ public class AppConfig {
 
     @Bean
     public MemberRepository memberRepository() {
+
+        System.out.println("call AppConfig.memberRepository");
         return new MemoryMemberRepository();
     }
 
     @Bean
     public OrderService orderService(){
+
+        System.out.println("call AppConfig.orderService");
         return new OrderServiceImpl(memberRepository(),discountPolicy());
     }
 
