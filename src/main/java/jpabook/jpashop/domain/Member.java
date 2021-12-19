@@ -24,5 +24,7 @@ public class Member {
     private Address address;
 
     @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
-    private List<Order> orders = new ArrayList<>();
+    private List<Order> orders = new ArrayList<>();    // 초기화에 대해 고민할 필요 없다.
+                                                       // 엔티티 persist하는 순간 컬렉션을 한번 감싼다. 내장 컬렉션으로 변경된다.
+                                                       // 컬렉션 함부로 바꾸지 않는다!
 }
