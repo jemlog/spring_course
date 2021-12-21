@@ -47,4 +47,12 @@ public class MemberService {
     {
         return memberRepository.findOne(memberId);
     }
+
+
+    // 업데이트는 웬만하면 변경 감지를 사용하자!!
+    @Transactional
+    public void update(Long id, String name) {
+        Member member = memberRepository.findOne(id);  // 트랜젝션 내부에서 findOne을 했으므로 1차 캐시로 값이 들어옴
+        member.setName(name);    // 내부 값을 변경 해주었고, transaction.commit이 일어날때 더티체킹이 이루어진다.
+    }
 }
