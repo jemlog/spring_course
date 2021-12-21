@@ -26,5 +26,10 @@ public class OrderRepository {
         return em.createQuery("select o from Order o",Order.class)
                 .getResultList();
     }
- //    public List<Order> findAll(OrderSearch orderSearch){}
+
+    public List<Order> findAllWithMemberDelivery() {   // 페치 조인 먹인 부분
+        List<Order> resultList = em.createQuery("select o from Order o join fetch o.member m join fetch o.delivery d", Order.class).getResultList();
+        return resultList;
+    }
+    //    public List<Order> findAll(OrderSearch orderSearch){}
 }
