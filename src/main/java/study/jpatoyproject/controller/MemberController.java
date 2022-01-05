@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import study.jpatoyproject.domain.Address;
 import study.jpatoyproject.domain.Member;
 import study.jpatoyproject.domain.dto.member.MemberResponseDto;
 import study.jpatoyproject.domain.dto.member.MemberRequestDto;
+import study.jpatoyproject.domain.dto.member.MemberSearch;
 import study.jpatoyproject.service.MemberService;
 
 import java.util.List;
@@ -31,7 +33,12 @@ public class MemberController {
         return members.map(m -> new MemberResponseDto(m.getId(),
                             m.getName(), m.getAge(), m.getGrade(), m.getGender(), m.getAddress()));
 
+    }
 
+    @GetMapping("/search")
+    public Page<MemberResponseDto> findAllByCondition(MemberSearch memberSearch, Pageable pageable)
+    {
+        return memberService.findAllByCondition(memberSearch, pageable);
     }
 
     @PostMapping("/join")

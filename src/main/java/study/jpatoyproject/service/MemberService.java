@@ -8,6 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 import study.jpatoyproject.domain.Address;
 import study.jpatoyproject.domain.Member;
 import study.jpatoyproject.domain.dto.member.MemberRequestDto;
+import study.jpatoyproject.domain.dto.member.MemberResponseDto;
+import study.jpatoyproject.domain.dto.member.MemberSearch;
 import study.jpatoyproject.domain.dto.member.MemberUpdateDto;
 import study.jpatoyproject.repository.MemberRepository;
 
@@ -24,6 +26,10 @@ public class MemberService {
     public Page<Member> findAll(Pageable pageable)
     {
         return memberRepository.findAll(pageable);
+    }
+
+    public Page<MemberResponseDto> findAllByCondition(MemberSearch memberSearch, Pageable pageable){
+        return memberRepository.findAllByCondition(memberSearch, pageable);
     }
 
     @Transactional
