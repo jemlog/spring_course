@@ -26,6 +26,7 @@ public class MemberController {
 
     private final MemberService memberService;
 
+    // 페이징만 되는 전체 조회 기능
     @GetMapping
     public Page<MemberResponseDto> findAll(@PageableDefault(size = 20) Pageable pageable) {
 
@@ -35,18 +36,21 @@ public class MemberController {
 
     }
 
+    // 페이징과 검색 기능이 있는 조회
     @GetMapping("/search")
     public Page<MemberResponseDto> findAllByCondition(MemberSearch memberSearch, Pageable pageable)
     {
         return memberService.findAllByCondition(memberSearch, pageable);
     }
 
+    // member 추가 기능
     @PostMapping("/join")
     public Long join(@RequestBody MemberRequestDto memberRequestDto)
     {
          return memberService.save(memberRequestDto);
     }
 
+    // member 삭제 기능
     @DeleteMapping("/{id}")
     public Result removeMember(@PathVariable("id") Long id)
     {

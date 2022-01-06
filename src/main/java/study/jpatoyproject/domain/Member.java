@@ -4,9 +4,12 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import study.jpatoyproject.domain.post.Post;
 import study.jpatoyproject.util.BaseEntity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -29,6 +32,9 @@ public class Member extends BaseEntity {
 
     @Embedded
     private Address address;
+
+    @OneToMany(mappedBy = "member")
+    private List<Post> postList = new ArrayList<>();
 
     @Builder
     public Member(String name, int age, Gender gender, Grade grade, Address address)

@@ -38,7 +38,12 @@ public class MemberRepositoryImpl implements CustomMemberResitory{
     public Page<MemberResponseDto> findAllByCondition(MemberSearch memberSearch, Pageable pageable) {
 
         QueryResults<MemberResponseDto> results = queryFactory
-                .select(new QMemberResponseDto(member.id, member.name, member.age, member.grade, member.gender, member.address))
+                .select(new QMemberResponseDto(member.id,
+                                            member.name,
+                                            member.age,
+                                            member.grade,
+                                            member.gender,
+                                            member.address))
                 .from(member)
                 .where(
                         nameEq(memberSearch.getName()),
