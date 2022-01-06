@@ -10,8 +10,7 @@ import study.jpatoyproject.domain.Member;
 import study.jpatoyproject.domain.dto.member.MemberRequestDto;
 import study.jpatoyproject.domain.dto.member.MemberResponseDto;
 import study.jpatoyproject.domain.dto.member.MemberSearch;
-import study.jpatoyproject.domain.dto.member.MemberUpdateDto;
-import study.jpatoyproject.repository.MemberRepository;
+import study.jpatoyproject.repository.member.MemberRepository;
 
 import java.util.List;
 

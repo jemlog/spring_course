@@ -1,25 +1,16 @@
-package study.jpatoyproject.repository;
+package study.jpatoyproject.repository.member;
 
 import com.querydsl.core.QueryResults;
-import com.querydsl.core.types.Predicate;
-import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
-import org.springframework.util.StringUtils;
-import study.jpatoyproject.domain.Member;
-import study.jpatoyproject.domain.QMember;
 import study.jpatoyproject.domain.dto.member.MemberResponseDto;
 import study.jpatoyproject.domain.dto.member.MemberSearch;
 import study.jpatoyproject.domain.dto.member.QMemberResponseDto;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 import static org.springframework.util.StringUtils.isEmpty;

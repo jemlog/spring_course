@@ -1,4 +1,4 @@
-package study.jpatoyproject.repository;
+package study.jpatoyproject.repository.member;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
