@@ -1,4 +1,4 @@
-package study.jpatoyproject;
+package study.jpatoyproject.security;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

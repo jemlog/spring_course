@@ -1,4 +1,4 @@
-package study.jpatoyproject;
+package study.jpatoyproject.security;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

@@ -1,4 +1,4 @@
-package study.jpatoyproject;
+package study.jpatoyproject.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
