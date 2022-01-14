@@ -31,6 +31,12 @@ public class MemberService {
         return memberRepository.findAllByCondition(memberSearch, pageable);
     }
 
+    public Member findById(Long id)
+    {
+        return memberRepository.findById(id).get();
+    }
+
+
     @Transactional
     public Long save(MemberRequestDto memberRequestDto)
     {

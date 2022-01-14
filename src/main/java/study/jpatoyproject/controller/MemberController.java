@@ -3,6 +3,7 @@ package study.jpatoyproject.controller;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -27,6 +28,7 @@ public class MemberController {
     private final MemberService memberService;
 
     // 페이징만 되는 전체 조회 기능
+
     @GetMapping
     public Page<MemberResponseDto> findAll(@PageableDefault(size = 20) Pageable pageable) {
 
@@ -34,6 +36,15 @@ public class MemberController {
         return members.map(m -> new MemberResponseDto(m.getId(),
                             m.getName(), m.getAge(), m.getGrade(), m.getGender(), m.getAddress()));
 
+    }
+
+    @Cacheable(value = "member-single",key = "#id")
+    @GetMapping("/cache/{id}")
+    public MemberResponseDto findById(@PathVariable Long id)
+    {
+        Member member = memberService.findById(id);
+        MemberResponseDto result = new MemberResponseDto(member);
+        return result;
     }
 
     // 페이징과 검색 기능이 있는 조회

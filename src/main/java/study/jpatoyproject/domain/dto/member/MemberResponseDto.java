@@ -7,10 +7,13 @@ import lombok.NoArgsConstructor;
 import study.jpatoyproject.domain.Address;
 import study.jpatoyproject.domain.Gender;
 import study.jpatoyproject.domain.Grade;
+import study.jpatoyproject.domain.Member;
+
+import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
-public class MemberResponseDto {
+public class MemberResponseDto implements Serializable {
 
     private Long id;
     private String name;
@@ -27,5 +30,14 @@ public class MemberResponseDto {
         this.grade = grade;
         this.gender = gender;
         this.address = address;
+    }
+
+    public MemberResponseDto(Member member) {
+        this.id = member.getId();
+        this.name = member.getName();
+        this.age = member.getAge();
+        this.grade = member.getGrade();
+        this.gender = member.getGender();
+        this.address = member.getAddress();
     }
 }
