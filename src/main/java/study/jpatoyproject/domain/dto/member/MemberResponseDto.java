@@ -18,15 +18,17 @@ public class MemberResponseDto implements Serializable {
     private Long id;
     private String name;
     private int age;
+    private int money;
     private Grade grade;
     private Gender gender;
     private Address address;
 
 
-    public MemberResponseDto(Long id, String name, int age, Grade grade, Gender gender, Address address) {
+    public MemberResponseDto(Long id, String name, int age,int money, Grade grade, Gender gender, Address address) {
         this.id = id;
         this.name = name;
         this.age = age;
+        this.money = money;
         this.grade = grade;
         this.gender = gender;
         this.address = address;

@@ -13,6 +13,7 @@ public class MemberRequestDto {
 
     private String name;
     private int age;
+    private int money;
     private Grade grade;
     private Gender gender;
     private String city;

@@ -34,7 +34,7 @@ public class MemberController {
 
         Page<Member> members = memberService.findAll(pageable);
         return members.map(m -> new MemberResponseDto(m.getId(),
-                            m.getName(), m.getAge(), m.getGrade(), m.getGender(), m.getAddress()));
+                            m.getName(), m.getAge(),m.getMoney(), m.getGrade(), m.getGender(), m.getAddress()));
 
     }
 

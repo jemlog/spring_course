@@ -24,6 +24,8 @@ public class Member extends BaseEntity {
 
     private int age;
 
+    private int money;
+
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
@@ -36,11 +38,28 @@ public class Member extends BaseEntity {
     @OneToMany(mappedBy = "member")
     private List<Post> postList = new ArrayList<>();
 
+
+    public void spentMoney(int spent){
+        money -= spent;
+        if(money < 0)
+        {
+            throw new IllegalStateException("돈이 0원보다 적으면 안된다.");
+        }
+    }
+
+    public void addMoney(int earn)
+    {
+        money += earn;
+    }
+
+
+
     @Builder
-    public Member(String name, int age, Gender gender, Grade grade, Address address)
+    public Member(String name, int age,int money, Gender gender, Grade grade, Address address)
     {
         this.name = name;
         this.age = age;
+        this.money = money;
         this.gender = gender;
         this.grade = grade;
         this.address = address;
