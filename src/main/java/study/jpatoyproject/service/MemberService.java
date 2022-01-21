@@ -43,6 +43,7 @@ public class MemberService {
         Member createdMember = Member.builder().name(memberRequestDto.getName())
                 .age(memberRequestDto.getAge())
                 .gender(memberRequestDto.getGender())
+                .money(memberRequestDto.getMoney())
                 .grade(memberRequestDto.getGrade())
                 .address(new Address(memberRequestDto.getCity(), memberRequestDto.getStreet())).build();
         return memberRepository.save(createdMember).getId();

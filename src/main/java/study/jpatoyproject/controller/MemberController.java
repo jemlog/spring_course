@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import study.jpatoyproject.domain.Address;
@@ -36,6 +37,16 @@ public class MemberController {
         return members.map(m -> new MemberResponseDto(m.getId(),
                             m.getName(), m.getAge(),m.getMoney(), m.getGrade(), m.getGender(), m.getAddress()));
 
+    }
+
+    @GetMapping("/moneySum")
+    public Integer findAllAndSumMoney(@PageableDefault(size = 20) Pageable pageable) {
+
+        Page<Member> members = memberService.findAll(pageable);
+        Integer collect = members.getContent().stream()
+                .collect(Collectors.summingInt(Member::getMoney));
+        System.out.println("collect = " + collect);
+        return collect;
     }
 
     @Cacheable(value = "member-single",key = "#id")
