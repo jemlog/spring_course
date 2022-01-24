@@ -35,7 +35,7 @@ public class MemberController {
 
         Page<Member> members = memberService.findAll(pageable);
         return members.map(m -> new MemberResponseDto(m.getId(),
-                            m.getName(), m.getAge(),m.getMoney(), m.getGrade(), m.getGender(), m.getAddress()));
+                            m.getName(), m.getAge(),m.getMoney()));
 
     }
 
@@ -66,7 +66,7 @@ public class MemberController {
     }
 
     // member 추가 기능
-    @PostMapping("/join")
+    @PostMapping("/signup")
     public Long join(@RequestBody MemberRequestDto memberRequestDto)
     {
          return memberService.save(memberRequestDto);

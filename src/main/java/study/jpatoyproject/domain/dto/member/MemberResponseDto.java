@@ -19,27 +19,22 @@ public class MemberResponseDto implements Serializable {
     private String name;
     private int age;
     private int money;
-    private Grade grade;
-    private Gender gender;
-    private Address address;
+//    private Grade grade;
+//    private Gender gender;
+//    private Address address;
 
 
-    public MemberResponseDto(Long id, String name, int age,int money, Grade grade, Gender gender, Address address) {
+    public MemberResponseDto(Long id, String name, int age,int money) {
         this.id = id;
         this.name = name;
         this.age = age;
         this.money = money;
-        this.grade = grade;
-        this.gender = gender;
-        this.address = address;
     }
 
     public MemberResponseDto(Member member) {
         this.id = member.getId();
         this.name = member.getName();
         this.age = member.getAge();
-        this.grade = member.getGrade();
-        this.gender = member.getGender();
-        this.address = member.getAddress();
+        this.money = member.getMoney();
     }
 }

@@ -13,6 +13,7 @@ import study.jpatoyproject.domain.dto.member.MemberSearch;
 import study.jpatoyproject.repository.member.MemberRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional(readOnly = true)
@@ -31,6 +32,11 @@ public class MemberService {
         return memberRepository.findAllByCondition(memberSearch, pageable);
     }
 
+    public Optional<Member> findByUsername(String userId)
+    {
+        return memberRepository.findByUsername(userId);
+    }
+
     public Member findById(Long id)
     {
         return memberRepository.findById(id).get();
@@ -40,7 +46,10 @@ public class MemberService {
     @Transactional
     public Long save(MemberRequestDto memberRequestDto)
     {
-        Member createdMember = Member.builder().name(memberRequestDto.getName())
+        Member createdMember = Member.builder()
+                .name(memberRequestDto.getName())
+                .username(memberRequestDto.getUsername())
+                .password(memberRequestDto.getPassword())
                 .age(memberRequestDto.getAge())
                 .gender(memberRequestDto.getGender())
                 .money(memberRequestDto.getMoney())
@@ -56,10 +65,7 @@ public class MemberService {
         memberRepository.delete(findMember);
     }
 
-    public List<Member> findByUsername(String username)
-    {
-        return memberRepository.findByName(username);
-    }
+
 
 
 

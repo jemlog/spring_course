@@ -20,6 +20,10 @@ public class Member extends BaseEntity {
     @Column(name = "member_id")
     private Long id;
 
+    private String username;
+
+    private String password;
+
     private String name;
 
     private int age;
@@ -55,9 +59,11 @@ public class Member extends BaseEntity {
 
 
     @Builder
-    public Member(String name, int age,int money, Gender gender, Grade grade, Address address)
+    public Member(String name, String username, String password , int age,int money, Gender gender, Grade grade, Address address)
     {
         this.name = name;
+        this.username = username;
+        this.password = password;
         this.age = age;
         this.money = money;
         this.gender = gender;
