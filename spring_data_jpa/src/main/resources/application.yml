@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/datajpa
+    password:
+    driver-class-name: org.h2.Driver
+    username: sa
+  jpa:
+    hibernate:
+      ddl-auto: create    # create는 실행시점에 테이블 다 지우고 다시 생성
+    properties:
+      hibernate:
+        format_sql: true
+        #show_sql: true  # SYSTEM.OUT 출력
+
+  logging:
+    level:
+      org.hibernate.SQL: debug
+# org.hibernate.type: trace
