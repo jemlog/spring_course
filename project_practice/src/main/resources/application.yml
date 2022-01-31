@@ -1,0 +1,25 @@
+spring:
+  cache:
+    type: redis
+    redis:
+      time-to-live: 10000
+      cache-null-values: true
+  redis:
+    host: localhost
+    port: 6379
+  datasource:
+    url: jdbc:mysql://localhost:3306/toy_schema?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: 4321
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        # show_sql: true
+        format_sql: true
+        use_sql_comments: true
+logging.level:
+  org.hibernate.SQL: debug
+  org.hibernate.type: trace
